@@ -1,6 +1,6 @@
 # ZenTask - Minimalist Focus Manager
 
-[aureliabutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/FlexsibleAdmin/zentask-minimalist-focus-testing-1)
 
 ZenTask is a visually stunning, minimalist task management application designed to help users maintain focus and clarity. Unlike cluttered productivity tools, ZenTask adheres to a strict 'less is more' philosophy, featuring a clean, distraction-free interface with smooth micro-interactions and satisfying tactile feedback.
 
@@ -80,7 +80,7 @@ This command starts the Vite development server. Open [http://localhost:3000](ht
 
 This project is configured for deployment on Cloudflare Workers.
 
-[aureliabutton]
+[![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/FlexsibleAdmin/zentask-minimalist-focus-testing-1)
 
 To deploy manually from the command line:
 
