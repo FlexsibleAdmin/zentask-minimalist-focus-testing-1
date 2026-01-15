@@ -4,23 +4,22 @@ import { useTaskStore } from '@/store/task-store';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Card } from '@/components/ui/card';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { format } from 'date-fns';
-import { 
-  Plus, 
-  Trash2, 
-  GripVertical, 
-  CheckCircle2, 
-  Circle, 
+import {
+  Plus,
+  Trash2,
+  GripVertical,
+  CheckCircle2,
+  Circle,
   Calendar as CalendarIcon,
   ListTodo
 } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import {
-  DndContext, 
+  DndContext,
   closestCenter,
   KeyboardSensor,
   PointerSensor,
@@ -30,7 +29,6 @@ import {
   TouchSensor
 } from '@dnd-kit/core';
 import {
-  arrayMove,
   SortableContext,
   sortableKeyboardCoordinates,
   verticalListSortingStrategy,
@@ -69,15 +67,15 @@ const SortableItem = React.memo(({ id, content, isCompleted, onToggle, onDelete 
         isCompleted ? "bg-secondary/30 border-transparent" : "border-border/50"
       )}>
         {/* Drag Handle */}
-        <div 
-          {...attributes} 
-          {...listeners} 
-          className="cursor-grab active:cursor-grabbing text-muted-foreground/40 hover:text-foreground transition-colors p-1 -ml-2"
+        <div
+          {...attributes}
+          {...listeners}
+          className="cursor-grab active:cursor-grabbing text-muted-foreground/40 hover:text-foreground transition-colors p-1 -ml-2 touch-none"
         >
           <GripVertical className="h-4 w-4" />
         </div>
         {/* Checkbox Custom */}
-        <button 
+        <button
           onClick={() => onToggle(id)}
           className="flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-full"
         >
@@ -179,7 +177,7 @@ export function HomePage() {
       <div className="min-h-[calc(100vh-4rem)] flex flex-col justify-center py-8">
         <ThemeToggle className="fixed top-4 right-4" />
         {/* Main Focus Card */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
@@ -213,8 +211,8 @@ export function HomePage() {
                   placeholder="What needs to be done?"
                   className="pl-12 h-14 text-lg bg-background/50 border-border/50 focus-visible:ring-primary/20 focus-visible:border-primary rounded-xl shadow-sm transition-all"
                 />
-                <Button 
-                  type="submit" 
+                <Button
+                  type="submit"
                   disabled={!newTaskInput.trim()}
                   className="absolute right-2 top-2 bottom-2 rounded-lg opacity-0 group-focus-within:opacity-100 transition-opacity"
                   size="sm"
@@ -240,13 +238,13 @@ export function HomePage() {
                     <p className="text-sm">Add a task to get started.</p>
                   </div>
                 ) : (
-                  <DndContext 
-                    sensors={sensors} 
-                    collisionDetection={closestCenter} 
+                  <DndContext
+                    sensors={sensors}
+                    collisionDetection={closestCenter}
                     onDragEnd={handleDragEnd}
                   >
-                    <SortableContext 
-                      items={filteredTasks.map(t => t.id)} 
+                    <SortableContext
+                      items={filteredTasks.map(t => t.id)}
                       strategy={verticalListSortingStrategy}
                     >
                       <div className="space-y-1 pb-4">
@@ -277,8 +275,8 @@ export function HomePage() {
                       onClick={() => setFilter(f)}
                       className={cn(
                         "px-3 py-1.5 rounded-md capitalize transition-all font-medium",
-                        filter === f 
-                          ? "bg-background text-foreground shadow-sm" 
+                        filter === f
+                          ? "bg-background text-foreground shadow-sm"
                           : "text-muted-foreground hover:text-foreground hover:bg-background/50"
                       )}
                     >
@@ -286,9 +284,9 @@ export function HomePage() {
                     </button>
                   ))}
                 </div>
-                <Button 
-                  variant="ghost" 
-                  size="sm" 
+                <Button
+                  variant="ghost"
+                  size="sm"
                   onClick={handleClearCompleted}
                   className="text-muted-foreground hover:text-destructive transition-colors"
                   disabled={!tasks.some(t => t.isCompleted)}
